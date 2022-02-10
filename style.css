@@ -31,3 +31,23 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.key-container button {
+	width: 43px;
+	height: 58px;
+	border-radius: 4px;
+	border: none;
+	background-color: #818384;
+	color: #ffffff;
+	margin: 4px;
+	text-align: center;
+}
+
+.key-container button:nth-child(11) {
+	margin-left: 30px;
+}
+
+.key-container button:nth-child(20),
+.key-container button:nth-child(28) {
+	width: 68px;
+}
