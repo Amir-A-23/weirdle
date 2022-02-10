@@ -32,6 +32,30 @@ const keys = [
 	'«',
 ];
 
+const guestRows = [
+	['', '', '', '', ''],
+	['', '', '', '', ''],
+	['', '', '', '', ''],
+	['', '', '', '', ''],
+	['', '', '', '', ''],
+	['', '', '', '', ''],
+];
+
+guestRows.forEach((guestRow, guessRowIndex) => {
+	const rowElement = document.createElement('div');
+	rowElement.setAttribute('id', 'guestRow-' + guessRowIndex);
+	guestRow.forEach((guess, guessIndex) => {
+		const tileElement = document.createElement('div');
+		tileElement.setAttribute(
+			'id',
+			'guessRow-' + guessRowIndex + 'tile-' + guessIndex,
+		);
+		tileElement.classList.add('tile');
+		rowElement.append(tileElement);
+	});
+	tileDisplay.append(rowElement);
+});
+
 const handleClick = () => {
 	console.log('clicked');
 };
