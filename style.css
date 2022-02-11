@@ -1,7 +1,7 @@
 * {
 	color: #ffffff;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'lucida Sans', Arial, sans-serif;
+		'Lucida Sans', Arial, sans-serif;
 }
 
 body {
@@ -15,14 +15,17 @@ body {
 	justify-content: space-between;
 	align-items: center;
 }
+
 .title-container {
 	text-align: center;
 	width: 510px;
 	border-bottom: solid 1px #3a3a3c;
+	margin-bottom: 30px;
 }
 
 .tile-container {
 	width: 330px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
@@ -39,7 +42,6 @@ body {
 	border: none;
 	background-color: #818384;
 	margin: 4px;
-	text-align: center;
 }
 
 .key-container button:nth-child(11) {
@@ -54,13 +56,25 @@ body {
 .tile-container div {
 	display: flex;
 }
+
 .tile-container .tile {
 	width: 62px;
 	height: 62px;
-	border: 2px solid #3a3a3c;
+	border: 2px solid#3a3a3c;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 2px;
+}
+
+.message-container {
+	height: 30px;
+}
+
+.message-container p {
+	background-color: #818384;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 0;
 }
