@@ -1,10 +1,13 @@
 const axios = require('axios').default;
 const express = require('express');
-
+const cors = require('cors');
 require('dotenv').config();
 
 const RANDOM_WORD_API_KEY = process.env.RANDOM_WORD_API_KEY;
 const app = express();
+
+app.use(cors());
+
 const PORT = 8000;
 
 app.get('/word', (req, res) => {

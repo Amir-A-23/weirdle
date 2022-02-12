@@ -1,7 +1,20 @@
 const tileDisplay = document.querySelector('.tile-container');
 const keyboard = document.querySelector('.key-container');
 const messageDisplay = document.querySelector('.message-container');
-const weirdle = 'SUPER';
+
+let weirdle = 'SUPER';
+
+const getWierdle = () => {
+	fetch('http://localhost:8000/word')
+		.then((response) => response.json())
+		.then((json) => {
+			console.log(json);
+			weirdle = json.toUpperCase();
+		})
+		.catch((err) => console.log(err));
+};
+
+getWierdle();
 const keys = [
 	'Q',
 	'W',
