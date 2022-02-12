@@ -83,16 +83,18 @@ keys.forEach((key) => {
 });
 
 const handleClick = (letter) => {
-	console.log('clicked', letter);
-	if (letter === '«') {
-		deleteLetter();
-		return;
+	if (!isGameOver) {
+		console.log('clicked', letter);
+		if (letter === '«') {
+			deleteLetter();
+			return;
+		}
+		if (letter === 'ENTER') {
+			checkRow();
+			return;
+		}
+		addLetter(letter);
 	}
-	if (letter === 'ENTER') {
-		checkRow();
-		return;
-	}
-	addLetter(letter);
 };
 
 const addLetter = (letter) => {
@@ -121,24 +123,35 @@ const deleteLetter = () => {
 
 const checkRow = () => {
 	const guess = guessRows[currentRow].join('');
-
+	console.log('guess', guess);
 	if (currentTile > 4) {
-		flipTile();
-		if (weirdle == guess) {
-			showMessage('Magnificent!');
-			isGameOver = true;
-			return;
-		} else {
-			if (currentRow >= 5) {
-				isGameOver = false;
-				showMessage('Game Over');
-				return;
-			}
-			if (currentRow < 5) {
-				currentRow++;
-				currentTile = 0;
-			}
-		}
+		fetch('http://localhost:8000/check/?word=${guess}')
+			.then((response) => response.json())
+			.then((json) => {
+				console.log(json);
+				if (json == 'Entry word not found') {
+					showMessage('word not in list');
+					return;
+				} else {
+					flipTile();
+					if (weirdle == guess) {
+						showMessage('Magnificent!');
+						isGameOver = true;
+						return;
+					} else {
+						if (currentRow >= 5) {
+							isGameOver = true;
+							showMessage('Game Over');
+							return;
+						}
+						if (currentRow < 5) {
+							currentRow++;
+							currentTile = 0;
+						}
+					}
+				}
+			})
+			.catch((err) => console.log(err));
 	}
 };
 
