@@ -1,7 +1,7 @@
 const tileDisplay = document.querySelector('.tile-container');
 const keyboard = document.querySelector('.key-container');
 const messageDisplay = document.querySelector('.message-container');
-const testWeirdle = 'SUPER';
+const weirdle = 'SUPER';
 const keys = [
 	'Q',
 	'W',
@@ -111,7 +111,7 @@ const checkRow = () => {
 
 	if (currentTile > 4) {
 		flipTile();
-		if (testWeirdle == guess) {
+		if (weirdle == guess) {
 			showMessage('Magnificent!');
 			isGameOver = true;
 			return;
@@ -142,20 +142,32 @@ const addColorToKey = (keyletter, color) => {
 
 const flipTile = () => {
 	const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes;
+	let checkWeirdle = weirdle;
+	const guess = [];
+
+	rowTiles.forEach((tile) => {
+		guess.push({ letter: tile.getAttribute('data'), color: 'grey-overlay' });
+	});
+
+	guess.forEach((guess, index) => {
+		if (guess.letter == weirdle[index]) {
+			guess.color = 'green-overlay';
+			checkWeirdle = checkWeirdle.replace(guess.letter, '');
+		}
+	});
+
+	guess.forEach((guess) => {
+		if (checkWeirdle.includes(guess.letter)) {
+			guess.color = 'yellow-overlay';
+			checkWeirdle = checkWeirdle.replace(guess.letter, '');
+		}
+	});
+
 	rowTiles.forEach((tile, index) => {
-		const dataLetter = tile.getAttribute('data');
 		setTimeout(() => {
 			tile.classList.add('flip');
-			if (dataLetter == testWeirdle[index]) {
-				tile.classList.add('green-overlay');
-				addColorToKey(dataLetter, 'green-overlay');
-			} else if (testWeirdle.includes(dataLetter)) {
-				tile.classList.add('yellow-overlay');
-				addColorToKey(dataLetter, 'yellow-overlay');
-			} else {
-				tile.classList.add('grey-overlay');
-				addColorToKey(dataLetter, 'grey-overlay');
-			}
+			tile.classList.add(guess[index].color);
+			addColorToKey(guess[index].letter, guess[index].color);
 		}, 500 * index);
 	});
 };
