@@ -135,6 +135,10 @@ const showMessage = (message) => {
 	messageDisplay.append(messageElement);
 	setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
 };
+const addColorToKey = (keyletter, color) => {
+	const key = document.getElementById(keyletter);
+	key.classList.add(color);
+};
 
 const flipTile = () => {
 	const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes;
@@ -144,11 +148,14 @@ const flipTile = () => {
 			tile.classList.add('flip');
 			if (dataLetter == testWeirdle[index]) {
 				tile.classList.add('green-overlay');
+				addColorToKey(dataLetter, 'green-overlay');
 			} else if (testWeirdle.includes(dataLetter)) {
 				tile.classList.add('yellow-overlay');
+				addColorToKey(dataLetter, 'yellow-overlay');
 			} else {
 				tile.classList.add('grey-overlay');
+				addColorToKey(dataLetter, 'grey-overlay');
 			}
-		}, 500 + index);
+		}, 500 * index);
 	});
 };
