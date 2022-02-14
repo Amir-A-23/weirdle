@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors());
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 app.get('/word', (req, res) => {
 	const options = {

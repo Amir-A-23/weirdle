@@ -2,10 +2,10 @@ const tileDisplay = document.querySelector('.tile-container');
 const keyboard = document.querySelector('.key-container');
 const messageDisplay = document.querySelector('.message-container');
 
-let weirdle = 'SUPER';
+//let weirdle = 'SUPER';
 
 const getWierdle = () => {
-	fetch('http://localhost:8000/word')
+	fetch('https://weirdle-2022.herokuapp.com/word')
 		.then((response) => response.json())
 		.then((json) => {
 			console.log(json);
