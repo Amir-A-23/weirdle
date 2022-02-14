@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors());
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.get('/word', (req, res) => {
 	const options = {
@@ -56,4 +56,6 @@ app.get('/check', (req, res) => {
 		});
 });
 
-app.listen(PORT, () => console.log('Server running on port ' + PORT));
+app.listen(PORT, () =>
+	console.warn(`App listening on http://localhost:${PORT}`),
+);
