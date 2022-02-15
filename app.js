@@ -9,6 +9,7 @@ const getWierdle = () => {
 		.then((response) => response.json())
 		.then((json) => {
 			weirdle = json.toUpperCase();
+			console.log(weirdle);
 		})
 		.catch((err) => console.log(err));
 };
@@ -158,7 +159,7 @@ const showMessage = (message) => {
 	const messageElement = document.createElement('p');
 	messageElement.textContent = message;
 	messageDisplay.append(messageElement);
-	setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+	setTimeout(() => messageDisplay.removeChild(messageElement), 3000);
 };
 const addColorToKey = (keyletter, color) => {
 	const key = document.getElementById(keyletter);
