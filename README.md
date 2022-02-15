@@ -53,4 +53,6 @@ Copy the path to this file and paste it in your browser to see the game and play
 
 Copyright (c) 2020 Ania Kubow
 
-Credit goes to Ania Kubów for creating the tutorial on making this wordle clone at Code with Ania Kubów on Youtube.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
