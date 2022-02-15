@@ -8,7 +8,6 @@ const getWierdle = () => {
 	fetch('https://weirdle-2022.herokuapp.com/word')
 		.then((response) => response.json())
 		.then((json) => {
-			console.log(json);
 			weirdle = json.toUpperCase();
 		})
 		.catch((err) => console.log(err));
@@ -123,9 +122,9 @@ const deleteLetter = () => {
 
 const checkRow = () => {
 	const guess = guessRows[currentRow].join('');
-	console.log('guess', guess);
+	//console.log('guess', guess);
 	if (currentTile > 4) {
-		fetch('https://weirdle-2022.herokuapp.com/check/?word=${guess}')
+		fetch(`https://weirdle-2022.herokuapp.com/check/?word=${guess}`)
 			.then((response) => response.json())
 			.then((json) => {
 				console.log(json);
