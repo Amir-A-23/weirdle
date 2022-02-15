@@ -125,7 +125,7 @@ const checkRow = () => {
 	const guess = guessRows[currentRow].join('');
 	console.log('guess', guess);
 	if (currentTile > 4) {
-		fetch('http://localhost:8000/check/?word=${guess}')
+		fetch('https://weirdle-2022.herokuapp.com/check/?word=${guess}')
 			.then((response) => response.json())
 			.then((json) => {
 				console.log(json);
